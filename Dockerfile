@@ -3,8 +3,10 @@ FROM ubuntu:14.04
 #@see https://bitbucket.org/devries/docker-dnsmasq/src/4dbcadd00346fea10cace0ac4278dcd4a0b6bbe4/Dockerfile?fileviewer=file-view-default
 MAINTAINER Christopher De Vries <devries@idolstarastronomer.com>
 
-COPY ./hosts /etc/althosts
+
 RUN apt-get update && apt-get install -y dnsmasq dnsutils && apt-get clean
+
+COPY ./hosts /etc/althosts
 
 RUN echo "addn-hosts=/etc/althosts" >> /etc/dnsmasq.conf
 RUN echo "user=root" >> /etc/dnsmasq.conf
